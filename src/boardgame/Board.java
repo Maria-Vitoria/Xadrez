@@ -23,6 +23,7 @@ public class Board {
 		return columns;
 	}
 
+	//criação da posição da peça no tabuleiro
 	public Piece piece(int row, int column) {
 		if (!positionExists(row, column)) {
 			throw new BoardException("Position not on the board");
