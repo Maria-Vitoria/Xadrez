@@ -4,6 +4,7 @@ import chess.ChessPiece;
 
 public class UI {
 
+	//nesse metodo é criada a visualização do tabuleiro
 	public static void printBoard(ChessPiece[][] pieces) {
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
@@ -15,6 +16,7 @@ public class UI {
 		System.out.println("  a b c d e f g h");
 	}
 
+	//aqui é feita a validação se possui peça ou não na posição, se tiver ele mostra, caso contrário mostra somente o -
 	private static void printPiece(ChessPiece piece) {
 		if (piece == null) {
 			System.out.print("-");
