@@ -23,7 +23,7 @@ public class Board {
 		return columns;
 	}
 
-	//criação da posição da peça no tabuleiro
+	// criação da posição da peça no tabuleiro
 	public Piece piece(int row, int column) {
 		if (!positionExists(row, column)) {
 			throw new BoardException("Position not on the board");
@@ -38,26 +38,40 @@ public class Board {
 		return pieces[position.getRow()][position.getColumn()];
 	}
 
-	//inclusão da posição da peça 
+	// inclusão da posição da peça
 	public void placePiece(Piece piece, Position position) {
-		if(thereIsAPiece(position)) {
+		if (thereIsAPiece(position)) {
 			throw new BoardException("There is already a piece on position " + position);
 		}
 		pieces[position.getRow()][position.getColumn()] = piece;
 		piece.position = position;
 	}
 
-	//validação sobre o número informado na posição, sendo maior que 0 e menor que a do tabuleiro
+	// remover peça da posição do tabuleiro
+	public Piece removePiece(Position position) {
+		if (!positionExists(position)) {
+			throw new BoardException("Position not on the board");
+		}
+		if (piece(position) == null) {
+			return null;
+		}
+		Piece aux = piece(position);
+		pieces[position.getRow()][position.getColumn()] = null;
+		return aux;
+	}
+
+	// validação sobre o número informado na posição, sendo maior que 0 e menor que
+	// a do tabuleiro
 	private boolean positionExists(int row, int column) {
 		return row >= 0 && row < rows && column >= 0 && column < columns;
 	}
 
-	//verificar se existe a posição no tabuleiro
+	// verificar se existe a posição no tabuleiro
 	public boolean positionExists(Position position) {
 		return positionExists(position.getRow(), position.getColumn());
 	}
 
-	//validação sobre a posição que esta a peça
+	// validação sobre a posição que esta a peça
 	public boolean thereIsAPiece(Position position) {
 		if (!positionExists(position)) {
 			throw new BoardException("Position not on the board");
